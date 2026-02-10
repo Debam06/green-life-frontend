@@ -13,8 +13,11 @@ export default function Login() {
     password: "",
   });
 
+  const [loading, setLoading] = useState(false); // ✅ new state
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // show loading state
 
     try {
       const res = await api.post("/auth/login", form); // ✅ axios instance
@@ -24,6 +27,8 @@ export default function Login() {
     } catch (err) {
       console.error(err);
       toast.error(err.response?.data?.message || "Login failed");
+    } finally {
+      setLoading(false); // reset loading state
     }
   };
 
@@ -55,9 +60,10 @@ export default function Login() {
 
           <button
             type="submit"
-            className="w-full bg-green-500 hover:bg-green-600 text-black py-3 rounded-lg transition font-semibold"
+            disabled={loading} // ✅ prevent double submit
+            className="w-full bg-green-500 hover:bg-green-600 text-black py-3 rounded-lg transition font-semibold flex items-center justify-center"
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 
