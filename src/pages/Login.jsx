@@ -36,7 +36,7 @@ export default function Login() {
           className="text-5xl font-bold text-green-400 mb-4 tracking-wide"
           style={{ fontFamily: "Bell MT, serif" }}
         >
-          Green Life <span className="text-sm align-super ml-1">™</span>
+          Green Life<span className="text-sm align-super ml-1">™</span>
         </h1>
 
         {/* One-liner description */}
