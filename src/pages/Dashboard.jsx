@@ -29,6 +29,9 @@ export default function Dashboard() {
   // 👤 Profile state
   const [profile, setProfile] = useState(null);
 
+  // Sidebar toggle for mobile
+  const [isOpen, setIsOpen] = useState(false);
+
   // Fetch plants + profile
   useEffect(() => {
     const fetchData = async () => {
@@ -138,21 +141,33 @@ export default function Dashboard() {
   };
 
   return (
-  <div className="min-h-screen bg-gradient-to-br from-black via-zinc-900 to-black text-white flex">
-    {/* Sidebar */}
-    <aside className="w-64 bg-zinc-950 border-r border-zinc-800 p-6 hidden md:flex flex-col justify-between">
-      <div>
-        <h1 
-          className="text-3xl font-bold text-green-400 mb-10 tracking-wide"
-          style={{ fontFamily: 'Bell MT, serif' }}
-        >
-          Green Life
-          <span className="text-sm align-super ml-1">™</span>
-        </h1>
-        <nav className="space-y-4">
-          <button className="w-full text-left px-4 py-2 rounded-lg hover:bg-green-500/10 hover:text-green-400 transition">
-            Dashboard
-          </button>
+    <div className="min-h-screen bg-gradient-to-br from-black via-zinc-900 to-black text-white flex">
+      {/* Mobile toggle button */}
+      <button
+        className="md:hidden p-4 text-green-400 fixed top-2 left-2 z-50"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        ☰
+      </button>
+
+      {/* Sidebar */}
+      <aside
+        className={`fixed inset-y-0 left-0 transform ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        } md:translate-x-0 md:static md:flex w-64 bg-zinc-950 border-r border-zinc-800 p-6 flex-col justify-between transition-transform duration-300 z-40`}
+      >
+        <div>
+          <h1
+            className="text-3xl font-bold text-green-400 mb-10 tracking-wide"
+            style={{ fontFamily: "Bell MT, serif" }}
+          >
+            Green Life
+            <span className="text-sm align-super ml-1">™</span>
+          </h1>
+          <nav className="space-y-4">
+            <button className="w-full text-left px-4 py-2 rounded-lg hover:bg-green-500/10 hover:text-green-400 transition">
+              Dashboard
+            </button>
 
             <button
               onClick={() => setShowCare(true)}
@@ -188,7 +203,7 @@ export default function Dashboard() {
       </aside>
 
       {/* Main */}
-      <main className="flex-1 p-8 relative">
+      <main className="flex-1 p-8 relative overflow-x-auto">
         <h2 className="text-3xl font-semibold mb-8">My Plants 🌿</h2>
 
         {/* Floating + Button */}
@@ -232,7 +247,7 @@ export default function Dashboard() {
           </div>
         )}
 
-        {/* 🌱 Daily Care Widget */}
+                {/* 🌱 Daily Care Widget */}
         {showCare && (
           <div className="absolute top-20 right-8 bg-zinc-900 border border-zinc-800 rounded-2xl p-6 w-[28rem] shadow-2xl z-50">
             <h3 className="text-xl font-semibold mb-4 text-green-400">🌱 Daily Care</h3>
@@ -248,7 +263,7 @@ export default function Dashboard() {
           </div>
         )}
 
-                {/* 🌤 Weather Widget */}
+        {/* 🌤 Weather Widget */}
         {showWeather && weather && (
           <div className="absolute top-20 right-8 bg-zinc-900 border border-zinc-800 rounded-2xl p-6 w-80 shadow-2xl z-50">
             <h3 className="text-xl font-semibold mb-4 text-blue-400">🌤 Weather</h3>
