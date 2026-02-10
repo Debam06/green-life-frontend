@@ -38,13 +38,13 @@ export default function Register() {
           className="text-5xl font-bold text-green-400 mb-4 tracking-wide"
           style={{ fontFamily: "Bell MT, serif" }}
         >
-          Green Life <span className="text-sm align-super ml-1">™</span>
+          Green Life<span className="text-sm align-super ml-1">™</span>
         </h1>
 
         {/* Refined tagline */}
         <p className="text-zinc-300 text-lg mb-8">
           Keep track of your homegrown plants and receive personalized care
-          recommendations tailored to your location and daily weather insights 🌿
+          recommendations tailored to your location and daily weather insights
         </p>
 
         {/* Register form */}
