@@ -249,16 +249,20 @@ export default function Dashboard() {
 
                 {/* 🌱 Daily Care Widget */}
         {showCare && (
-          <div className="absolute top-20 right-8 bg-zinc-900 border border-zinc-800 rounded-2xl p-6 w-[28rem] shadow-2xl z-50">
-            <h3 className="text-xl font-semibold mb-4 text-green-400">🌱 Daily Care</h3>
-            <CareTasksWidget />
-            <div className="flex justify-end mt-4">
-              <button
-                onClick={() => setShowCare(false)}
-                className="px-4 py-2 rounded-lg bg-zinc-700 hover:bg-zinc-600 transition"
+              <div
+            className="absolute top-20 left-1/2 transform -translate-x-1/2 
+               bg-zinc-900 border border-zinc-800 rounded-2xl p-6 
+               w-[90%] md:w-[28rem] shadow-2xl z-50 md:left-auto md:right-8 md:translate-x-0"
+            >
+          <h3 className="text-xl font-semibold mb-4 text-green-400">🌱 Daily Care</h3>
+          <CareTasksWidget />
+          <div className="flex justify-end mt-4">
+            <button
+              onClick={() => setShowCare(false)}
+              className="px-4 py-2 rounded-lg bg-zinc-700 hover:bg-zinc-600 transition"
               >
-                Close
-              </button>
+              Close
+            </button>
             </div>
           </div>
         )}
