@@ -41,7 +41,7 @@ export default function Login() {
 
         {/* One-liner description */}
         <p className="text-zinc-300 text-lg mb-8">
-          Your personal plant care companion 🌿
+          Your personal plant care companion
         </p>
 
         {/* Login form */}
